@@ -1,12 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-{% load static %}
 <head>
     <title>
         CRM
     </title>
     {% load bootstrap4 %} {# import bootstrap4/bootstrap3 #}
     {% bootstrap_javascript jquery='full' %} {# Embed Bootstrap JS+jQuery #}
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}"> 
 </head>
 
