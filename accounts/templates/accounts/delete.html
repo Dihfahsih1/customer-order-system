@@ -1,0 +1,12 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+ <p>Are you sure you want to remove {{item}}</p>
+ <form action="{% url 'delete_order' item.id %}" method="POST">
+     {% csrf_token %}
+     <a href="{% url 'home' %}" class="btn btn-sm btn-danger">Cancel</a>
+     <input type="submit" name='confirm' class="btn btn-sm btn-primary">
+ </form>
+
+
+{% endblock %}

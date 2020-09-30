@@ -42,4 +42,4 @@ class Order(models.Model):
     
 
     def __str__(self):
-        return str(self.date_created)
+        return self.product.name
