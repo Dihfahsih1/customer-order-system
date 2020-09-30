@@ -25,4 +25,6 @@ def products(request):
     context={'products':products}
     return render(request,'accounts/products.html',context)
    
-
+def createOrder(request):
+    context = { }
+    return render(request,'accounts/order_form.html',context)
