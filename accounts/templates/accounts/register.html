@@ -12,10 +12,14 @@
                 <div class="col">
                     <div class="col-md-5">
                         <div class="card card-body">
-                            {{form}}
-                            <div style="float: right;">
-                                <input type="submit" name="submit" class="btn btn-primary">
-                            </div>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                {{form.as_p}}
+                                <div style="float: right;">
+                                    <input type="submit" name="submit" class="btn btn-primary">
+                                </div>
+                            </form>
+                           
                         </div>
                     </div>
                 </div>

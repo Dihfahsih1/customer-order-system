@@ -7,7 +7,11 @@ from .filters import *
 from django.contrib.auth.forms import UserCreationForm
 
 def registerPage(request):
-    form = UserCreationForm
+    form = CreateUserForm()
+    if request.method=='POST':
+        form = CreateUserForm()
+        if form.is_valid():
+            form.save()
     context={'form':form}
     return render(request, 'accounts/register.html', context)
 
