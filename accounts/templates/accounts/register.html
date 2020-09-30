@@ -14,7 +14,12 @@
                         <div class="card card-body">
                             <form action="" method="POST">
                                 {% csrf_token %}
-                                {{form.as_p}}
+                                {% for field in form %}
+                                {{field.label}}<p>
+                                    
+                                    {{field}}
+                                </p>
+                                {% endfor %}
                                 <div style="float: right;">
                                     <input type="submit" name="submit" class="btn btn-primary">
                                 </div>
