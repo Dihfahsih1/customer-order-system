@@ -1,9 +1,21 @@
 {% extends 'accounts/main.html' %}
 
 {% block content %}
-<form action="" method="POST">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" name="submit">
-</form>
+<br>
+<div class='container-fluid'>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form}}
+                    <br>
+                    <div style="float: right;">
+                        <input class="btn btn-primary" type="submit" name="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
