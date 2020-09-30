@@ -8,5 +8,7 @@ urlpatterns = [
     path('create-order/<str:pk>/', views.createOrder, name="create_order"),
     path('update-order/<str:pk>/', views.UpdateOrder, name="update_order"),
     path('delete-order/<str:pk>/', views.DeleteOrder, name="delete_order"),
+    path('register/', views.registerPage, name="register"),
+    path('login/', views.loginPage, name="login"),
     
 ]
