@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .decorators import *
+from django.contrib.auth.models import Group
 
 @unauthenticated_user
 def registerPage(request):
@@ -16,9 +17,13 @@ def registerPage(request):
     if request.method=='POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            user = form.cleaned_data.get('username')
-            messages.success(request,'Account was created succesfully for ' + user + ', you can now login')
-            form.save()
+            user=form.save()
+            username = form.cleaned_data.get('username')
+
+            group = Group.objects.get(name='customers')
+            user.groups.add(group)
+
+            messages.success(request,'Account was created succesfully for ' + username + ', you can now login')
             return redirect('login')
     context={'form':form}
     return render(request, 'accounts/register.html', context)
@@ -43,7 +48,7 @@ def logoutUser(request):
     return redirect('login')
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admins'])    
+@admin_only  
 def home(request):
     orders = Order.objects.all()
     customers = Customer.objects.all()
@@ -111,7 +116,7 @@ def DeleteOrder(request,pk):
         return redirect('/')
     context = {'item':item}
     return render(request, 'accounts/delete.html', context)
-    
+
 def userPage(request):
     context={}
     return render(request,'accounts/user.html', context)

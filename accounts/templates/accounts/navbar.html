@@ -15,13 +15,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-
-            <li>
-                <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
-            </li>
-            <li>
-                <a class="nav-link" href="{% url 'products' %}">Products</a>
-            </li>
+            {% if request.user.is_staff %}
+                <li>
+                    <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'products' %}">Products</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 <span class="hello-msg"><i class="fa fa-user"></i> {{request.user }}</span>
