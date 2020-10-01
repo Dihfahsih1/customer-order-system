@@ -3,6 +3,28 @@
     <head>
         <title>Register</title>
         <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+        <script src="{% static '/js/jquery-3.4.1.min.js' %}"></script>
+        <style>
+            body,
+            html{
+                margin:0;
+                padding:0;
+                height:100%;
+                background: #7abecc !important;
+            }
+            .user_card{
+                width: 350px;
+                margin-top: auto;
+                background: #74cfbf;
+                position:relative;
+                display:flex;
+                justify-content: center;
+                flex-direction: column;
+                padding: 10px;
+                box-shadow:  0 4px 8px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                
+            }
+        </style>    
     </head>
     <body> 
         <div class="container">
@@ -14,12 +36,8 @@
                         <div class="card card-body">
                             <form action="" method="POST">
                                 {% csrf_token %}
-                                {% for field in form %}
-                                {{field.label}}<p>
-                                    
-                                    {{field}}
-                                </p>
-                                {% endfor %}
+                                 {{form.username.label}}
+                                 {{form.username}}
                                 <div style="float: right;">
                                     <input type="submit" name="submit" class="btn btn-primary">
                                 </div>
