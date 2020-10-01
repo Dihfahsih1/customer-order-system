@@ -1,6 +1,6 @@
 {% extends 'accounts/main.html' %}
 {% block content %}
-<h2>User Profile</h2>
+<h2>{{request.user.customer}}</h2>
 {% include 'accounts/status.html' %}
 <div class="container-fluid">
     <div class="row">
