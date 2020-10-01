@@ -22,6 +22,7 @@ def registerPage(request):
 
             group = Group.objects.get(name='customers')
             user.groups.add(group)
+            Customer.objects.create(user=user,)
 
             messages.success(request,'Account was created succesfully for ' + username + ', you can now login')
             return redirect('login')
