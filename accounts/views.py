@@ -130,5 +130,14 @@ def userPage(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['customers'])     
 def accountSettings(request):
-    context={}
+    customer=request.user.customer
+    form=customerForm(instance=customer)
+    if request.method == 'POST':
+        form=customerForm(request.POST, request.FILES, instance=customer)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your information has been updated')
+            return redirect('user-account')
+
+    context={'form':form}
     return render(request,'accounts/account_settings.html',context)
