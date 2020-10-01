@@ -14,13 +14,12 @@
                         <th>Status</th>
                     </tr>
                     {% for order in orders %}
-                    <tr>
-                        <td>{{order.product}}</td>
-                        <td>{{order.product.category}}</td>
-                        <td>{{order.date_created}}</td>
-                        <td>{{order.status}}</td>
-                    </tr>
-    
+                        <tr>
+                            <td>{{order.product}}</td>
+                            <td>{{order.product.category}}</td>
+                            <td>{{order.date_created}}</td>
+                            <td>{{order.status}}</td>
+                        </tr>
                     {% endfor %}
     
                 </table>
