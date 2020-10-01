@@ -116,7 +116,12 @@ def DeleteOrder(request,pk):
         return redirect('/')
     context = {'item':item}
     return render(request, 'accounts/delete.html', context)
-
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['customers'])   
 def userPage(request):
-    context={}
+    orders=request.user.customer.order_set.all()
+    total_orders = orders.count()
+    total_delivered = orders.filter(status="Delivered").count()
+    total_pending= orders.filter(status="Pending").count()
+    context={'orders':orders,'total_orders':total_orders,'total_delivered':total_delivered,'total_pending':total_pending}
     return render(request,'accounts/user.html', context)
