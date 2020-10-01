@@ -6,7 +6,7 @@ from django.forms import inlineformset_factory
 from .filters import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-
+from django.contrib.auth import authenticate, login, logout
 def registerPage(request):
     form = CreateUserForm()
     if request.method=='POST':
@@ -20,6 +20,14 @@ def registerPage(request):
     return render(request, 'accounts/register.html', context)
 
 def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request,'You have logged in successfully as ' + str(user) )
+            return redirect('home')
     context={}
     return render(request, 'accounts/login.html', context)
 def home(request):
