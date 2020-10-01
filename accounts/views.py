@@ -5,13 +5,17 @@ from .forms import *
 from django.forms import inlineformset_factory
 from .filters import *
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 def registerPage(request):
     form = CreateUserForm()
     if request.method=='POST':
-        form = CreateUserForm()
+        form = CreateUserForm(request.POST)
         if form.is_valid():
+            user = form.cleaned_data.get('username')
+            messages.success(request,'Account was created succesfully for ' + user + ', you can now login')
             form.save()
+            return redirect('login')
     context={'form':form}
     return render(request, 'accounts/register.html', context)
 
