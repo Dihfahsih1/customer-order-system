@@ -19,11 +19,6 @@ def registerPage(request):
         if form.is_valid():
             user=form.save()
             username = form.cleaned_data.get('username')
-
-            # group = Group.objects.get(name='customers')
-            # user.groups.add(group)
-            # Customer.objects.create(user=user,)
-
             messages.success(request,'Account was created succesfully for ' + username + ', you can now login')
             return redirect('login')
     context={'form':form}
@@ -73,7 +68,7 @@ def customer(request,pk):
     return render(request,'accounts/customer.html', context)
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admins'])     
+@allowed_users(allowed_roles=['admins','customers'])     
 def products(request):
     products = Product.objects.all()
     context={'products':products}
