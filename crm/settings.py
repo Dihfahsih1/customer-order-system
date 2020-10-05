@@ -1,7 +1,6 @@
 
 
 import os
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'm&&(vl!g9#_yr()*@d77f$pqn*4^_s#5%pc2zh26wa=!fyww_*'
@@ -74,6 +73,9 @@ DATABASES = {
     }
 }
 
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
