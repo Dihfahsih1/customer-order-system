@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_filters',
     'crispy_forms',
+    'psycopg2',
     'github_storages',
     
 ]
