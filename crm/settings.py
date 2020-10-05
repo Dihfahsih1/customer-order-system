@@ -20,8 +20,15 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_filters',
     'crispy_forms',
+    'github_storages',
+    
 ]
 
+DEFAULT_FILE_STORAGE = "github_storages.backend.BackendStorages"
+GITHUB_HANDLE = "Pythonista1"
+ACCESS_TOKEN = "f284bcf2c4651226f99da98e821abfb98a24a610"
+GITHUB_REPO_NAME = "amazing"
+MEDIA_BUCKET_NAME = "media"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
