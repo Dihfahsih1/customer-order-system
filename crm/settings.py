@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm&&(vl!g9#_yr()*@d77f$pqn*4^_s#5%pc2zh26wa=!fyww_*'
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dihfahsih-crm.herokuapp.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -106,6 +106,7 @@ EMAIL_HOST_PASSWORD = 'dvvzfwgpnjyttqsj'
 EMAIL_USE_TLS = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
