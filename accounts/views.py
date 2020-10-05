@@ -12,7 +12,7 @@ from .decorators import *
 from django.contrib.auth.models import Group
 
 @unauthenticated_user
-def registerPage(request):
+def registerPage(request,instance):
     form = CreateUserForm()
     if request.method=='POST':
         form = CreateUserForm(request.POST)
