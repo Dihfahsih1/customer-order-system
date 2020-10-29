@@ -110,6 +110,7 @@ def DeleteOrder(request,pk):
         return redirect('/')
     context = {'item':item}
     return render(request, 'accounts/delete.html', context)
+    
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['customers'])   
 def userPage(request):
